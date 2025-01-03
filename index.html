@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Keys</title>
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .table-container {
+            width: 80%;
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            color: #333;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: #1e3c72;
+            color: white;
+        }
+
+        tr:hover {
+            background: #f0f0f0;
+        }
+
+        .buy-button {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            border: none;
+            transition: transform 0.3s ease;
+        }
+
+        .buy-button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Popup Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            background: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+            color: #333;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 20px;
+        }
+
+        .modal-content input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .modal-content button {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .modal-content button:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Available Subscription Keys</h1>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Key</th>
+                    <th>Buy</th>
+                </tr>
+            </thead>
+            <tbody>
+                <script>
+                    const keys = [
+                        "F12RT********8LP7", "G74HU********9FN9", "A85XY********8KP3", "C97MT********1WX7",
+                        "K12BC********6MZ5", "P84LX********9GJ8", "H26RT********1KC4", "F93BG********1MK8",
+                        "X74HU********9NP2", "L21XY********3BP3", "M65RT********1LC7", "Y93BC********6KP8",
+                        "G85RT********9MF2", "F12XY********7GC8", "C74HU********9KP2", "N92RT********1LC4",
+                        "P65XY********1MF3", "H21RT********7BC6", "K93HU********1GP8", "X87BC********9LK2",
+                        "G74XY********7CJ6", "K85TZ********3RN9", "L21MN********9YQ4", "P63HL********5DA2",
+                        "J74BW********8GF3", "M92DF********6JQ1", "Q65XZ********7WL5", "N74HB********2CF9",
+                        "F83JX********4TR7"
+                    ];
+
+                    keys.forEach(key => {
+                        document.write(`
+                            <tr>
+                                <td>${key}</td>
+                                <td><button class="buy-button" onclick="openModal('${key}')">Buy</button></td>
+                            </tr>
+                        `);
+                    });
+                </script>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h2>Enter Your Telegram Username</h2>
+            <p id="selected-key"></p>
+            <input type="text" id="telegram-username" placeholder="Your Telegram Username">
+            <br>
+            <button onclick="submitUsername()">Submit</button>
+            <button onclick="closeModal()">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('modal');
+        const selectedKeyElement = document.getElementById('selected-key');
+
+        function openModal(key) {
+            selectedKeyElement.textContent = `Key: ${key}`;
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        function submitUsername() {
+            const username = document.getElementById('telegram-username').value;
+            if (username.trim() === '') {
+                alert('Please enter your Telegram username.');
+                return;
+            }
+            window.location.href = "https://xmostafizur.github.io/TDX-NO/";
+        }
+
+        // Close modal if clicked outside content
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        };
+    </script>
+</body>
+</html>
